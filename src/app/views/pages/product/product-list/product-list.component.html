@@ -1,0 +1,126 @@
+<br />
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-md-3">
+
+
+      <div class="alert alert-warning" role="alert" style="padding-top:20px;">
+        <h5 class="alert-heading">Search Products 🔎</h5>
+      </div>
+
+      <div class="form-group">
+        <label>ID</label>
+        <input type="text" class="form-control" [(ngModel)]="filter.id" (keyup.enter)="getData()" placeholder="Enter to search">
+      </div>
+
+      <div class="form-group">
+        <label>Brand or description</label>
+        <input type="text" class="form-control" [(ngModel)]="filter.search" (keyup.enter)="getData()" placeholder="Enter to search">
+      </div>
+
+      <div class="form-group">
+          <button class="btn btn-secondary mr-2" (click)="clearFilters()">
+              <i class="fa fa-undo"></i>&nbsp;Clear
+          </button>
+
+          <button class="btn btn-primary" (click)="getData()">
+              <i class="fa fa-search"></i>&nbsp;Search
+          </button>
+      </div>
+
+    </div>
+
+    <div class="col-md-9">
+      <div class="container">
+        <app-card-loader [loop]="3" [height]="800" *ngIf="loading"></app-card-loader>
+        <div class="row" *ngIf="!loading">
+
+          <div class="col-sm-12" *ngIf="productList.length == 0">
+            <div class="alert alert-danger" role="alert">
+              <h4 class="alert-heading">Oh No!:</h4>
+              <p>🥺 We do not have products based on your filters</p>
+            </div>
+          </div>
+
+          <div class="col-sm-12" *ngIf="productList.length > 0">
+            <div class="alert alert-warning" role="alert">
+              <h4 class="alert-heading">Product Results:</h4>
+              <p>⚡️ There are {{config.totalItems | number:'1.0':'en-US'}} products found!</p>
+            </div>
+          </div>
+
+
+          <!-- List of Products -->
+          <div class="col-sm-4 mb-2" *ngFor="
+              let product of productList | paginate: { itemsPerPage: config.itemsPerPage, currentPage: config.currentPage, totalItems: config.totalItems }
+          ">
+            <div class="item">
+              <div class="mb-r">
+                <!--Card-->
+                <div class="card card-cascade wider mb-4">
+                  <!--Card image-->
+                  <a>
+                    <div class="view overlay hm-white-slight">
+                      <img [src]="product.image" class="img-fluid" alt="" width="360px" height="140px" />
+                      <a>
+                        <div class="mask waves-effect waves-light" mdbRippleRadius></div>
+                      </a>
+                    </div>
+                  </a>
+                  <!--/.Card image-->
+
+                  <!--Card content-->
+                  <div class="card-body text-center no-padding">
+                    <!--Category & Title-->
+                    <a class="text-muted">
+                      <h5>Brand: {{ product.brand }}</h5>
+                    </a>
+                    <div class="card-title">
+                      <strong>
+                        <a routerLinkActive="router-link-active">Description:</a>
+                      </strong>
+                    </div>
+
+                    <!--Description-->
+                    <div class="card-text">
+                      {{ product.description }}
+                      <div *ngIf="product.has_discount">
+                        <button type="button" class="btn btn-danger btn-sm mt-3">{{product.discount_percentage}}%</button>
+                      </div>
+                    </div>
+
+                    <!--Card footer-->
+                    <div class="card-footer">
+                      <span class="left">
+                        <span class="text-success font-weight-bold">{{ product.price | currency }}</span><br>
+                        <span *ngIf="product.has_discount" [ngClass] = "{ 'discountOldPrice': product.has_discount }">{{ product.original_price | currency }}</span>
+                      </span>
+                      <span class="right">
+                        <a placement="top" mdbTooltip="Add to Wishlist" container="body" class="text-danger">
+                          <i class="fa fa-heart"></i>
+                        </a>
+                        <a placement="top" mdbTooltip="Add to Cart" container="body">
+                          <i class="fa fa-shopping-cart"></i>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                  <!--/.Card content-->
+
+                </div>
+                <!--/.Card-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination -->
+        <div class="text-center mt-3" style="padding-bottom: 80px;" *ngIf="productList.length > 0">
+          <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+        </div>
+      </div>
+      <!--/.Card-->
+    </div>
+  </div>
+</div>

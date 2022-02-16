@@ -1,0 +1,117 @@
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="javascript:;;">
+    <img src="assets/img/logo.png" width="110" />
+  </a>
+
+  <!-- Collapse button -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#basicExampleNav"
+    aria-controls="basicExampleNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <div>
+          <a
+            class="nav-link"
+            href="javascript:;;"
+          >
+            <i class="fa fa-heart">
+              <span class="mt-2"> 0</span
+              >
+            </i>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div>
+          <a
+            class="nav-link"
+            href="javascript:;;"
+          >
+            <i class="fa fa-shopping-cart">
+              <span class="mt-2"> 0</span
+              >
+            </i>
+          </a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" dropdown>
+        <a
+          dropdownToggle
+          type="button"
+          class="nav-link dropdown-toggle waves-light"
+        >
+          <i class="fa fa-paint-brush"> </i><span class="caret"></span
+        ></a>
+        <div
+          *dropdownMenu
+          class="dropdown-menu dropdown dropdown-primary color-dropdown"
+          role="menu"
+        >
+          <div class="row p-2" style="margin: 0;">
+            <ng-container
+              *ngFor="let theme of colorPallet1"
+              [ngTemplateOutlet]="themeTemplate"
+              [ngTemplateOutletContext]="{
+                item: theme
+              }"
+            ></ng-container>
+          </div>
+          <div class="row p-2" style="margin: 0;">
+            <ng-container
+              *ngFor="let theme of colorPallet2"
+              [ngTemplateOutlet]="themeTemplate"
+              [ngTemplateOutletContext]="{
+                item: theme
+              }"
+            ></ng-container>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="javascript:;;" class="nav-link"
+          >Hello Guest</a
+        >
+      </li>
+    </ul>
+  </div>
+  <!-- Collapsible content -->
+</nav>
+<!--/.Navbar-->
+
+<!-- Theme Template -->
+<ng-template #themeTemplate let-item="item">
+  <div
+    class="col-sm hover-effect"
+    data-toggle="tooltip"
+    data-placement="bottom"
+    [title]="item.title"
+    style="padding: 0;"
+  >
+    <div class="color-container">
+      <div
+        class="colorDiv {{ item.color }}"
+        (click)="updateTheme(item.id)"
+      ></div>
+    </div>
+  </div>
+</ng-template>
