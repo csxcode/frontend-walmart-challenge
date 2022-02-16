@@ -2,7 +2,7 @@
 
 This code was developed witn angular framework in order to do the challenge of test of full-stack-developer for walmart.
 
-**Live Demo 💣** : [Frontend-Walmart-Challenge](https://)
+**Live Demo 💣** : https://frontend-walmart-challenge-6m48y.ondigitalocean.app/products
 
 ![Page](/src/assets/img/2022-02-16_14-48.png)
 
