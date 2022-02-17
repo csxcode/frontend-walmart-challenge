@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
 import { FormsModule, FormBuilder } from "@angular/forms";
 import { RouterModule, Router } from "@angular/router";
-import { OwlModule } from "ngx-owl-carousel";
 import { NgxPaginationModule } from "ngx-pagination";
 import { HttpClientModule } from "@angular/common/http";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
@@ -22,7 +21,6 @@ import { CdkTreeModule } from "@angular/cdk/tree";
     FormsModule,
     HttpClientModule,
     RouterModule,
-    OwlModule,
     NgxPaginationModule,
     NgxContentLoadingModule,
   ],
@@ -35,7 +33,6 @@ import { CdkTreeModule } from "@angular/cdk/tree";
     MDBBootstrapModule,
     FormsModule,
     RouterModule,
-    OwlModule,
     NgxPaginationModule,
     PageNotFoundComponent,
     NgxContentLoadingModule,

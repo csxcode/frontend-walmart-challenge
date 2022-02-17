@@ -2,11 +2,13 @@
 
 This code was developed witn angular framework in order to do the challenge of test of full-stack-developer for walmart.
 
-**Live Demo 💣** : https://frontend-walmart-challenge-6m48y.ondigitalocean.app/products
+**Live Demo 💣** : http://64.227.26.164:8000/
 
 ![Page](/src/assets/img/2022-02-16_14-48.png)
 
 ## Installation
+
+This project use node version 14
 
 Run the below commands inside the root project:
 

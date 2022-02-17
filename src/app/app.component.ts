@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { fadeAnimation } from "./shared/animations/fadeIntRoute";
 declare var $: any;
 
@@ -19,18 +19,5 @@ declare var $: any;
   styleUrls: ["./app.component.scss"],
   animations: [fadeAnimation],
 })
-export class AppComponent implements OnInit {
-  ngOnInit() {
-    $(".banner").owlCarousel({
-      autoHeight: true,
-      center: true,
-      nav: true,
-      items: 1,
-      margin: 30,
-      loop: true,
-      autoplay: true,
-      autoplayTimeout: 3000,
-      autoplayHoverPause: true,
-    });
-  }
+export class AppComponent {
 }
